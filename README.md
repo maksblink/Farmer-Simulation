@@ -1,4 +1,5 @@
 # Farmer-Simulation
+<<<<<<< HEAD
 Projektujemy prostą symulację agentową, w której będziemy symulować interakcje farmera z
 marchewkami oraz z rynkiem i interakcje marchewki ze szkodnikami oraz pogodą.
 Dla uproszczenia przyjmujemy, że farmer posiada 1 pole z 100 grządkami (10 kolumn oraz
@@ -105,3 +106,6 @@ marchewka, marchewka gotowa do zbioru albo szkodnik.
 
 ▶Cena zakupu nasion
 ▶Cena sprzedaży marchewek
+=======
+/ffff
+>>>>>>> 31ca595857e8f65bc15a06df38b5e464002245f1
