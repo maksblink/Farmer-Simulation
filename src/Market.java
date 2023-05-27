@@ -3,14 +3,32 @@ import java.util.Random;
 public class Market {
     private double CarrotSalePrice, SeedPurchasePrice;
 
-    public void setRandomCarrotSalePrice(int max, int min) {
-        Random rand = new Random();
-        CarrotSalePrice = rand.nextInt((max - min) + 1) + min;
+    public void setRandomCarrotSalePrice(double max, double min) {
+        double mean = (double)(max+min)/2; //srednia
+        double stdDev = (double)(max-min)/4; //odchylenie standardowe / 2
+        if (stdDev < 0) stdDev*=(-1);
+
+        double rand = new Random().nextGaussian(mean, stdDev);
+
+        if (rand > max) rand = max;
+        if (rand < min) rand = min;
+
+        rand = (double)((int)(rand*100))/100; //skrocenie ceny do 2 miejsc po przecinku
+        CarrotSalePrice = rand;
     }
 
-    public void setRandomSeedPurchasePrice(int max, int min) {
-        Random rand = new Random();
-        SeedPurchasePrice = rand.nextInt((max - min) + 1) + min;
+    public void setRandomSeedPurchasePrice(double max, double min) {
+        double mean = (double)(max+min)/2; //srednia
+        double stdDev = (double)(max-min)/4; //odchylenie standardowe / 2
+        if (stdDev < 0) stdDev*=(-1);
+
+        double rand = new Random().nextGaussian(mean, stdDev);
+
+        if (rand > max) rand = max;
+        if (rand < min) rand = min;
+
+        rand = (double)((int)(rand*100))/100; //skrocenie ceny do 2 miejsc po przecinku
+        SeedPurchasePrice = rand;
     }
 
     public double getCarrotSalePrice() {
