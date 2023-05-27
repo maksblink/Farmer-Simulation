@@ -27,6 +27,10 @@ public class Farmer {
         }
     }
 
+    void plant_seed(double seed_purchase_price) {
+
+    }
+
     void sell_carrots(double carrot_sale_price) {
         money += carrot_sale_price * carrots;
         carrots = 0;

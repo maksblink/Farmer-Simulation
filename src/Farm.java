@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Farm {
     private final int width, height;
-    private char[][] fields;
+    public int[][] fields;
 
     private int SunExposure, Humidity;
 
@@ -19,11 +19,11 @@ public class Farm {
     public Farm(int given_width, int given_height) {
         width = given_width;
         height = given_height;
-        fields = new char[width][height];
+        fields = new int[width][height];
 
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                fields[i][j] = '0';
+                fields[i][j] = 0;
             }
         }
     }
@@ -42,6 +42,14 @@ public class Farm {
 
     int getHumidity() {
         return Humidity;
+    }
+
+    void plant_seed(int x, int y) {
+        fields[x][y] = 1;
+    }
+
+    void harvest_carrot(int x, int y) {
+        fields[x][y] = 0;
     }
 
 
