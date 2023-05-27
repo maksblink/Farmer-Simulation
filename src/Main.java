@@ -6,7 +6,7 @@ public class Main {
         Farm farm = new Farm(5, 5);
 
         {
-            //Market block
+            //Market blocks
             {
                 market.setRandomSeedPurchasePrice(2, 2);
                 market.setRandomCarrotSalePrice(5, 5);
