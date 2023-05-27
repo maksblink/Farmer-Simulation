@@ -1,5 +1,5 @@
 import java.util.Random;
-
+//zmina
 public class Farm {
     private final int width, height;
     private char[][] fields;
