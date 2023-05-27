@@ -57,7 +57,7 @@ public class Farm {
         StringBuilder farm_fields = new StringBuilder();
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                farm_fields.append(fields[i][j]);
+                farm_fields.append(fields[i][j] + "\t");
             }
             farm_fields.append("\n");
         }
