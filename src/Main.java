@@ -1,4 +1,3 @@
-
 public class Main {
     public static void main(String[] args) {
         Farmer farmer = new Farmer(100, 0, 0);
@@ -29,7 +28,5 @@ public class Main {
                 System.out.println("\n");
             }
         }
-
-
     }
 }
