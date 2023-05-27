@@ -8,17 +8,17 @@ public class Farmer {
         carrots = given_carrots;
     }
 
-//    int getMoney() {
-//        return money;
-//    }
-//
-//    int getSeeds() {
-//        return seeds;
-//    }
-//
-//    int getCarrots() {
-//        return carrots;
-//    }
+    double getMoney() {
+        return money;
+    }
+
+    int getSeeds() {
+        return seeds;
+    }
+
+    int getCarrots() {
+        return carrots;
+    }
 
     void buy_seeds(double seed_purchase_price) {
         while (money >= seed_purchase_price) {
