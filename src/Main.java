@@ -1,4 +1,3 @@
-
 public class Main {
     public static void main(String[] args) {
         Farmer farmer = new Farmer(100, 0, 0);
@@ -6,7 +5,7 @@ public class Main {
         Farm farm = new Farm(5, 5);
 
         {
-            //Market blocks
+            //Market block
             {
                 market.setRandomSeedPurchasePrice(2, 2);
                 market.setRandomCarrotSalePrice(5, 5);
