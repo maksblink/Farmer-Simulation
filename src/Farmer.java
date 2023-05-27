@@ -21,10 +21,15 @@ public class Farmer {
 //    }
 
     void buy_seeds(double seed_purchase_price) {
-        while (money > seed_purchase_price) {
+        while (money >= seed_purchase_price) {
             money -= seed_purchase_price;
             seeds += 1;
         }
+    }
+
+    void sell_carrots(double carrot_sale_price) {
+        money += carrot_sale_price * carrots;
+        carrots = 0;
     }
 
     public void show_off() {
