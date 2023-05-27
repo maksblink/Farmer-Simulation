@@ -27,8 +27,17 @@ public class Farmer {
         }
     }
 
-    void plant_seed(double seed_purchase_price) {
+    boolean plant_seed() {
+        if (seeds > 0) {
+            seeds -= 1;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
+    void harvest_carrot() {
+        carrots += 1;
     }
 
     void sell_carrots(double carrot_sale_price) {
