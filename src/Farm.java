@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Farm {
     private final int width, height;
-    public int[][] fields;
+    public Field[][] fields;
 
     private int SunExposure, Humidity;
 
@@ -19,20 +19,22 @@ public class Farm {
     public Farm(int given_width, int given_height) {
         width = given_width;
         height = given_height;
-        fields = new int[width][height];
+        fields = new Field[width][height];
 
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                fields[i][j] = 0;
+                fields[i][j] = new Field(0, 0);
+                fields[i][j].setLevel(0);
             }
         }
+
     }
 
-    int getWidth() {
+    public int getWidth() {
         return width;
     }
 
-    int getHeight() {
+    public int getHeight() {
         return height;
     }
 
@@ -45,11 +47,11 @@ public class Farm {
     }
 
     void plant_seed(int x, int y) {
-        fields[x][y] = 1;
+        fields[x][y].setLevel(1);
     }
 
     void harvest_carrot(int x, int y) {
-        fields[x][y] = 0;
+        fields[x][y].setLevel(0);
     }
 
 
@@ -57,7 +59,7 @@ public class Farm {
         StringBuilder farm_fields = new StringBuilder();
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                farm_fields.append(fields[i][j] + "\t");
+                farm_fields.append(fields[i][j].getLvl()).append("\t");
             }
             farm_fields.append("\n");
         }
