@@ -12,14 +12,6 @@ public class Farmer {
         return money;
     }
 
-    int getSeeds() {
-        return seeds;
-    }
-
-    int getCarrots() {
-        return carrots;
-    }
-
     void buy_seeds(double seed_purchase_price, int farm_size) {
         while (money >= seed_purchase_price && seeds < farm_size) {
             money -= seed_purchase_price;
@@ -51,7 +43,4 @@ public class Farmer {
         System.out.println("seeds: " + seeds);
         System.out.println("carrots: " + carrots);
     }
-
-
 }
-
