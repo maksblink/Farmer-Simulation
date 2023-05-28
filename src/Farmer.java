@@ -20,8 +20,8 @@ public class Farmer {
         return carrots;
     }
 
-    void buy_seeds(double seed_purchase_price) {
-        while (money >= seed_purchase_price) {
+    void buy_seeds(double seed_purchase_price, int farm_size) {
+        while (money >= seed_purchase_price && seeds < farm_size) {
             money -= seed_purchase_price;
             seeds += 1;
         }
