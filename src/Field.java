@@ -8,14 +8,6 @@ public class Field {
         this.points = points;
     }
 
-    public int getDefaultLvl() {
-        return 0;
-    }
-
-    public int getDefaultPoints() {
-        return 0;
-    }
-
     public int getLvl() {
         return lvl;
     }
@@ -48,6 +40,4 @@ public class Field {
         System.out.println("Lvl: " + lvl);
         System.out.println("Points: " + points);
     }
-
-
 }

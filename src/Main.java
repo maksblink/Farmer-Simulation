@@ -1,12 +1,11 @@
 public class Main {
-
     public static void main(String[] args) {
         Farmer farmer = new Farmer(10, 0, 0);
         Market market = new Market();
         Farm farm = new Farm(10, 12);
 
         int days = 0;
-        while (farmer.getMoney() < 1000) {
+        while (farmer.getMoney() < 1000000) {
             System.out.println("\nTHIS IS THE " + days + " DAY\n");
 
             //Market block
@@ -19,12 +18,12 @@ public class Main {
             farm.show_off();
             System.out.println("\n");
 
-            farm.setRandomSunExposure(10, 10);
-            farm.setRandomHumidity(10, 10);
+            farm.setRandomSunExposure(6, 0);
+            farm.setRandomHumidity(6, 0);
 
             for (int i = 0; i < farm.getWidth(); i++) {
                 for (int j = 0; j < farm.getHeight(); j++) {
-                    farm.fields[i][j].addPointsOrLvs(farm.getSunExposure() + farm.getHumidity());
+                    farm.fields[i][j].addPointsOrLvs(farm.getSunExposure() * farm.getHumidity());
                 }
             }
 
@@ -47,12 +46,7 @@ public class Main {
                     }
                 }
             }
-
-
             days++;
-
         }
     }
-
-
 }

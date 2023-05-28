@@ -54,7 +54,6 @@ public class Farm {
         fields[x][y].setLevel(0);
     }
 
-
     public void show_off() {
         StringBuilder farm_fields = new StringBuilder();
         for (int i = 0; i < width; i++) {
@@ -69,6 +68,4 @@ public class Farm {
         System.out.println("Humidity: " + Humidity);
         System.out.println(farm_fields);
     }
-
-
 }
