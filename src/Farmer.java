@@ -1,11 +1,21 @@
 public class Farmer {
     private int seeds, carrots;
-    private double money;
+    private double money,
+    pestControlPrice = 10;
+    private int pestTolerance = 10;
 
     public Farmer(double given_moneys, int given_seeds, int given_carrots) {
         money = given_moneys;
         seeds = given_seeds;
         carrots = given_carrots;
+    }
+
+    public Farmer(double given_moneys, int given_seeds, int given_carrots, double given_pestControlPrice, int given_pestTolerance) {
+        money = given_moneys;
+        seeds = given_seeds;
+        carrots = given_carrots;
+        pestControlPrice = given_pestControlPrice;
+        pestTolerance = given_pestTolerance;
     }
 
     double getMoney() {
@@ -42,5 +52,16 @@ public class Farmer {
         System.out.println("money: " + money);
         System.out.println("seeds: " + seeds);
         System.out.println("carrots: " + carrots);
+    }
+
+    public int getPestTolerance(){
+        return pestTolerance;
+    }
+
+    public void HandlePests(double money, Farm farm){
+        int amountToRemove = (int)(money/pestControlPrice);
+        int removed;
+        removed = farm.RemovePests(amountToRemove);
+        money -= removed*pestControlPrice;
     }
 }
