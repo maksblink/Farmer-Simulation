@@ -24,13 +24,25 @@ public class Farm {
         height = given_height;
         fields = new Field[width][height];
 
+        SetUpFields(fields);
+    }
+
+    public Farm(int given_width, int given_height, int given_pestSpawnChance) {
+        width = given_width;
+        height = given_height;
+        fields = new Field[width][height];
+        pestSpawnChance = given_pestSpawnChance;
+
+        SetUpFields(fields);
+    }
+
+    private void SetUpFields (Field[][] fields){
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 fields[i][j] = new Field(0, 0);
                 fields[i][j].setLevel(0);
             }
         }
-
     }
 
     public int getWidth() {
@@ -91,7 +103,7 @@ public class Farm {
                 pestCount ++;
 
                 //v---debug---v
-                System.out.println("\nSPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!");
+                //System.out.println("\nSPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!SPAWNED!");
                 //^---debug---^
             }
         }

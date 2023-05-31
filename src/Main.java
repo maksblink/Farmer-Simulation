@@ -52,30 +52,13 @@ public class Main {
                 }
             }
 
-            if(farm.getPestCount() > 10){
-                //v---debug---v
-                Scanner sc = new Scanner(System.in);
-                sc.nextLine();
-                //^---debug---^
+            if(farm.getPestCount() > farmer.getPestTolerance()){
                 farmer.HandlePests(farmer.getMoney()/2, farm);
                 farm.show_off();
-                //v---debug---v
-                sc.nextLine();
-                //^---debug---^
             }
 
             //Utility
             days++;
-
-
-            //debuging
-            //---
-            System.out.println("Area=" + farm.getArea() + "        Pests=" + farm.getPestCount() + '\n');
-            /*
-            Scanner sc = new Scanner(System.in);
-            sc.nextLine();
-            */
-            //---
         }
     }
 }
