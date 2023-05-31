@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.function.Function;
 
 public class Farm {
     private final int width, height;
@@ -73,11 +72,53 @@ public class Farm {
         fields[x][y].setLevel(0);
     }
 
-    public void show_off() {
+    public void show_off_debug() {
         StringBuilder farm_fields = new StringBuilder();
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 farm_fields.append(fields[i][j].getLvl()).append("\t");
+            }
+            farm_fields.append("\n");
+        }
+
+        System.out.println("Hello I am Farm!");
+        System.out.println("SunExposure: " + SunExposure);
+        System.out.println("Humidity: " + Humidity);
+        System.out.println(farm_fields);
+    }
+
+    public void show_off() {
+        StringBuilder farm_fields = new StringBuilder();
+        String fieldIcon;
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                switch (fields[i][j].getLvl()){
+                    case -1:
+                        fieldIcon = "*";
+                        break;
+                    case 0:
+                        fieldIcon = "_";
+                        break;
+                    case 1:
+                        fieldIcon = ".";
+                        break;
+                    case 2:
+                        fieldIcon = "v";
+                        break;
+                    case 3:
+                        fieldIcon = "Y";
+                        break;
+                    case 4:
+                        fieldIcon = "n";
+                        break;
+                    case 5:
+                        fieldIcon = "ń";
+                        break;
+                    default:
+                        fieldIcon = "\u9072";// [?]
+                        break;
+                }
+                farm_fields.append(fieldIcon).append(' ');
             }
             farm_fields.append("\n");
         }

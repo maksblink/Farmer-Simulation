@@ -58,8 +58,8 @@ public class Farmer {
         return pestTolerance;
     }
 
-    public void HandlePests(double money, Farm farm){
-        int amountToRemove = (int)(money/pestControlPrice);
+    public void HandlePests(double usedmoney, Farm farm){
+        int amountToRemove = (int)(usedmoney/pestControlPrice);
         int removed;
         removed = farm.RemovePests(amountToRemove);
         money -= removed*pestControlPrice;

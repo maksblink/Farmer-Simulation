@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
         Farmer farmer = new Farmer(10, 0, 0);
@@ -54,7 +52,7 @@ public class Main {
 
             if(farm.getPestCount() > farmer.getPestTolerance()){
                 farmer.HandlePests(farmer.getMoney()/2, farm);
-                farm.show_off();
+                farm.show_off_debug();
             }
 
             //Utility
