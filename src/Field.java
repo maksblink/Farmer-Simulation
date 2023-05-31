@@ -19,7 +19,7 @@ public class Field {
     public void addPointsOrLvs(int given_points) {
         if (points >= max_points) {
             levelUp();
-        } else if (lvl != 0) {
+        } else if (lvl > 0) {
             points += given_points;
         }
     }

@@ -1,6 +1,7 @@
 public class Farmer {
     private int seeds, carrots;
-    private double money;
+    private double money,
+    pestControlPrice = 10;
 
     public Farmer(double given_moneys, int given_seeds, int given_carrots) {
         money = given_moneys;
@@ -42,5 +43,12 @@ public class Farmer {
         System.out.println("money: " + money);
         System.out.println("seeds: " + seeds);
         System.out.println("carrots: " + carrots);
+    }
+
+    public void HandlePests(double money, Farm farm){
+        int amountToRemove = (int)(money/pestControlPrice);
+        int removed;
+        removed = farm.RemovePests(amountToRemove);
+        money -= removed*pestControlPrice;
     }
 }
