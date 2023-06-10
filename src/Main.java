@@ -31,32 +31,41 @@ public class Main {
 
 
             //Farmer block
-            farmer.sell_carrots(market.getCarrotSalePrice());
-            farmer.buy_seeds(market.getSeedPurchasePrice(), farm.getWidth() * farm.getHeight());
+            FarmerRoutine(farmer, farm, market);
 
-            farmer.show_off();
-            System.out.println();
 
-            for (int i = 0; i < farm.getWidth(); i++) {
-                for (int j = 0; j < farm.getHeight(); j++) {
-                    if (farm.fields[i][j].getLvl() == 0) {
-                        if (farmer.plant_seed()) {
-                            farm.plant_seed(i, j);
-                        }
-                    } else if (farm.fields[i][j].getLvl() == 5) {
-                        farm.harvest_carrot(i, j);
-                        farmer.harvest_carrot();
-                    }
-                }
-            }
-
-            if(farm.getPestCount() > farmer.getPestTolerance()){
-                farmer.HandlePests(farmer.getMoney()/2, farm);
-                farm.show_off_debug();
-            }
 
             //Utility
             days++;
+        }
+    }
+
+    private static void FarmerRoutine(Farmer farmer, Farm farm, Market market){
+        farmer.sell_carrots(market.getCarrotSalePrice());
+        farmer.buy_seeds(market.getSeedPurchasePrice(), farm.getWidth() * farm.getHeight());
+
+        farmer.show_off();
+        System.out.println();
+
+        //TODO: zmienic gdy bedzie zmieniony sposo przechowywania pol [!!!!!!!!!!!!!!!]
+        for (int i = 0; i < farm.getWidth(); i++) {
+            for (int j = 0; j < farm.getHeight(); j++) {
+                if (farm.fields[i][j].getLvl() == 0) {
+                    if (farmer.plant_seed()) {
+                        farm.plant_seed(i, j);
+                    }
+                } else if (farm.fields[i][j].getLvl() == 5) {
+                    farm.harvest_carrot(i, j);
+                    farmer.harvest_carrot();
+                }
+            }
+        }
+
+        
+
+        if(farm.getPestCount() > farmer.getPestTolerance()){
+            farmer.HandlePests(farmer.getMoney()/2, farm);
+            farm.show_off_debug();
         }
     }
 }

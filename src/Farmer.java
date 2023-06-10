@@ -1,7 +1,6 @@
 public class Farmer {
     private int seeds, carrots;
-    private double money,
-    pestControlPrice = 10;
+    private double money, pestControlPrice = 10;
     private int pestTolerance = 10;
 
     public Farmer(double given_moneys, int given_seeds, int given_carrots) {
