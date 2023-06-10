@@ -5,7 +5,7 @@ public class Main {
         Farm farm = new Farm(10, 12);
 
         int days = 0;
-        while (farmer.getMoney() < 1000000 && farm.getPestCount() < farm.getArea()) {
+        while (farmer.getMoney() < 1000 && farm.getPestCount() < farm.getArea()) {
             System.out.println("\nTHIS IS THE " + days + " DAY\n");
 
             //Market block
@@ -23,7 +23,7 @@ public class Main {
 
             for (int i = 0; i < farm.getWidth(); i++) {
                 for (int j = 0; j < farm.getHeight(); j++) {
-                    farm.fields[i][j].addPointsOrLvs(farm.getSunExposure() * farm.getHumidity());
+                    farm.fields.get(i).get(j).addPointsOrLvs(farm.getSunExposure() * farm.getHumidity());
                 }
             }
 
@@ -47,16 +47,15 @@ public class Main {
 
         farmer.show_off();
 
-        //TODO: zmienic gdy bedzie zmieniony sposo przechowywania pol [!!!]
         for (int i = 0; i < farm.getWidth(); i++) {
             for (int j = 0; j < farm.getHeight(); j++) {
-                if (farm.fields[i][j].getLvl() == 0) {
-                    if (farmer.plantSeed()) {
-                        farm.plantSeed(i, j);
+                if (farm.fields.get(i).get(j).getLvl() == 0) {
+                    if (farmer.plant_seed()) {
+                        farm.plant_seed(i, j);
                     }
-                } else if (farm.fields[i][j].getLvl() == 5) {
-                    farm.harvestCarrot(i, j);
-                    farmer.harvestCarrot();
+                } else if (farm.fields.get(i).get(j).getLvl() == 5) {
+                    farm.harvest_carrot(i, j);
+                    farmer.harvest_carrot();
                 }
             }
         }
