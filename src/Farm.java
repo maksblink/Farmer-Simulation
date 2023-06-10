@@ -66,6 +66,7 @@ public class Farm {
         return Humidity;
     }
 
+
     void plant_seed(int x, int y) {
         fields.get(x).get(y).setLevel(1);
     }
@@ -139,9 +140,10 @@ public class Farm {
             locx = rand.nextInt(width);
             locy = rand.nextInt(height);
 
+
             if (fields.get(locx).get(locy).getLvl() > 1
-                    && fields.get(locx).get(locy).getLvl() != -1
-                    && fields.get(locx).get(locy).getLvl() == 5) {
+                    || fields.get(locx).get(locy).getLvl() != -1
+                    || fields.get(locx).get(locy).getLvl() != 5) {
                 fields.get(locx).get(locy).setLevel(-1);
                 pestCount ++;
 
@@ -156,6 +158,8 @@ public class Farm {
         return pestCount;
     }
 
+
+    //TODO: "public" :/
     public int RemovePests(int amountToRemove){
         int amountLeft = amountToRemove;
         for(int i = 1; i <= amountToRemove; i++){
