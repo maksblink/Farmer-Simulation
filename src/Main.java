@@ -41,13 +41,14 @@ public class Main {
     }
 
     private static void FarmerRoutine(Farmer farmer, Farm farm, Market market){
-        farmer.sell_carrots(market.getCarrotSalePrice());
-        farmer.buy_seeds(market.getSeedPurchasePrice(), farm.getWidth() * farm.getHeight());
+
+        farmer.sellCarrots(market.getCarrotSalePrice());
+        farmer.buySeeds(market.getSeedPurchasePrice(), farm.getWidth() * farm.getHeight());
 
         farmer.show_off();
         System.out.println();
 
-        //TODO: zmienic gdy bedzie zmieniony sposo przechowywania pol [!!!!!!!!!!!!!!!]
+        //TODO: zmienic gdy bedzie zmieniony sposo przechowywania pol [!!!]
         for (int i = 0; i < farm.getWidth(); i++) {
             for (int j = 0; j < farm.getHeight(); j++) {
                 if (farm.fields[i][j].getLvl() == 0) {
@@ -56,15 +57,15 @@ public class Main {
                     }
                 } else if (farm.fields[i][j].getLvl() == 5) {
                     farm.harvest_carrot(i, j);
-                    farmer.harvest_carrot();
+                    farmer.harvestCarrot();
                 }
             }
         }
 
-        
+
 
         if(farm.getPestCount() > farmer.getPestTolerance()){
-            farmer.HandlePests(farmer.getMoney()/2, farm);
+            farmer.handlePests(farmer.getMoney()/2, farm);
             farm.show_off_debug();
         }
     }

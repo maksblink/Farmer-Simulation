@@ -138,8 +138,8 @@ public class Farm {
             locy = rand.nextInt(height);
 
             if (fields[locx][locy].getLvl() > 1
-                    && fields[locx][locy].getLvl() != -1
-                    && fields[locx][locy].getLvl() == 5) {
+                    || fields[locx][locy].getLvl() != -1
+                    || fields[locx][locy].getLvl() != 5) {
                 fields[locx][locy].setLevel(-1);
                 pestCount ++;
 
@@ -154,6 +154,8 @@ public class Farm {
         return pestCount;
     }
 
+
+    //TODO: "public" :/
     public int RemovePests(int amountToRemove){
         int amountLeft = amountToRemove;
         for(int i = 1; i <= amountToRemove; i++){
