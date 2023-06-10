@@ -64,11 +64,11 @@ public class Farm {
         return Humidity;
     }
 
-    void plant_seed(int x, int y) {
+    void plantSeed(int x, int y) {
         fields[x][y].setLevel(1);
     }
 
-    void harvest_carrot(int x, int y) {
+    void harvestCarrot(int x, int y) {
         fields[x][y].setLevel(0);
     }
 

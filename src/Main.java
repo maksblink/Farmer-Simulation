@@ -52,21 +52,17 @@ public class Main {
         for (int i = 0; i < farm.getWidth(); i++) {
             for (int j = 0; j < farm.getHeight(); j++) {
                 if (farm.fields[i][j].getLvl() == 0) {
-                    if (farmer.plant_seed()) {
-                        farm.plant_seed(i, j);
+                    if (farmer.plantSeed()) {
+                        farm.plantSeed(i, j);
                     }
                 } else if (farm.fields[i][j].getLvl() == 5) {
-                    farm.harvest_carrot(i, j);
+                    farm.harvestCarrot(i, j);
                     farmer.harvestCarrot();
                 }
             }
         }
 
 
-
-        if(farm.getPestCount() > farmer.getPestTolerance()){
-            farmer.handlePests(farmer.getMoney()/2, farm);
-            farm.show_off_debug();
-        }
+        farmer.handlePests(farm);
     }
 }

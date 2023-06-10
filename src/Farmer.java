@@ -1,5 +1,5 @@
 public class Farmer {
-    static Strategy defaultStrat = new CarrotsFirstStrat();
+    static Strategy defaultStrat = new StratCarrotsFirst();
     private int seeds, carrots;
     private double money, pestControlPrice = 10;
     //TODO: pestControlPrice do marketu
@@ -7,24 +7,36 @@ public class Farmer {
     private Strategy strategy = defaultStrat;
 
 
-    public Farmer(double given_moneys, int given_seeds, int given_carrots) {
-        money = given_moneys;
-        seeds = given_seeds;
-        carrots = given_carrots;
-    }
-
-    public Farmer(double given_moneys, int given_seeds, int given_carrots, double given_pestControlPrice) {
-        money = given_moneys;
-        seeds = given_seeds;
-        carrots = given_carrots;
-        pestControlPrice = given_pestControlPrice;
+    public Farmer(double givenMoneys, int givenSeeds, int givenCarrots) {
+        money = givenMoneys;
+        seeds = givenSeeds;
+        carrots = givenCarrots;
     }
 
 
     double getMoney() {return money;}
     public int getSeeds() {return seeds;}
     public int getCarrots() {return carrots;}
+    public double getPestControlPrice() {return pestControlPrice;}
     public Strategy getStrategy() {return strategy;}
+
+    public void addMoney(Strategy strats, double income){
+        if(strats == strategy) money += income;
+    }
+    public void subtractMoney(Strategy strats, double spending){
+        if(strats == strategy)money -= spending;
+    }
+    public void addSeeds(Strategy strats, int income){
+        if(strats == strategy) seeds += income;
+    }
+    public void subtractSeeds(Strategy strats, int spending){
+        if(strats == strategy) seeds -= spending;
+    }
+    public void addCarrots(Strategy strats, int amount){
+        if(strats == strategy) carrots += amount;
+    }
+
+
 
 
     public void show_off() {
@@ -41,37 +53,32 @@ public class Farmer {
 
 
 
-    void buySeeds(double seed_purchase_price, int farm_size) {
-        strategy.BuySeeds();
-        /*while (money >= seed_purchase_price && seeds < farm_size) {
-            money -= seed_purchase_price;
-            seeds += 1;
-        }*/
+    void buySeeds(double seedPurchasePrice, int farmSize) {
+        strategy.stratBuySeeds(this, seedPurchasePrice, farmSize);
     }
 
-    boolean plant_seed() {
-        if (seeds > 0) {
-            seeds -= 1;
-            return true;
-        } else {
-            return false;
-        }
+    boolean plantSeed() {
+        return strategy.stratPlantSeeds(this);
     }
 
     void harvestCarrot() {
-        carrots += 1;
+        strategy.stratHarvestCarrots(this);
     }
 
-    void sellCarrots(double carrot_sale_price) {
-        money += carrot_sale_price * carrots;
+    void sellCarrots(double carrotSalePrice) {
+        money += carrotSalePrice * carrots;
         carrots = 0;
     }
 
-    public void handlePests(double usedmoney, Farm farm){
+    public void handlePests(Farm farm){
+        strategy.stratHandlePests(this, farm);
+
+        /*
         int amountToRemove = (int)(usedmoney/pestControlPrice);
         int removed;
         removed = farm.RemovePests(amountToRemove);
         money -= removed*pestControlPrice;
+         */
     }
 
 }

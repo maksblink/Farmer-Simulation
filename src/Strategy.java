@@ -1,12 +1,12 @@
 public interface Strategy {
 
-    void stratBuySeeds(Farmer farmer, double seed_purchase_price, int farm_size);
+    void stratBuySeeds(Farmer farmer, double seedPurchasePrice, int farm_size);
 
-    boolean stratPlantSeeds();
+    boolean stratPlantSeeds(Farmer farmer);
 
-    void stratHarvestCarrots();
+    void stratHarvestCarrots(Farmer farmer);
 
-    void stratellCarrots(double carrot_sale_price);
+    //void stratSellCarrots(double carrotSalePrice);
 
-    void stratHandlePests(Farmer farmer, double usedmoney, Farm farm);
+    void stratHandlePests(Farmer farmer, Farm farm);
 }
