@@ -1,8 +1,8 @@
 public class Farmer {
-    static Strategy defaultStrat = new StratCarrotsFirst();
+    static Strategy defaultStrat = new StratPestsFirst();
     private int seeds, carrots;
     private double money, pestControlPrice = 10;
-    //TODO: pestControlPrice do marketu
+    //TODO: pestControlPrice do marketu (?maybe?)
 
     private Strategy strategy = defaultStrat;
 
@@ -11,6 +11,15 @@ public class Farmer {
         money = givenMoneys;
         seeds = givenSeeds;
         carrots = givenCarrots;
+    }
+
+    public void rethinkStrategy(int pestAmount){
+        if(pestAmount > strategy.getPestTolerance()){
+            strategy = new StratPestsFirst();
+        }
+        if(pestAmount < strategy.getPestTolerance()){
+            strategy = new StratCarrotsFirst();
+        }
     }
 
 
@@ -44,11 +53,9 @@ public class Farmer {
         System.out.println("money: " + money);
         System.out.println("seeds: " + seeds);
         System.out.println("carrots: " + carrots);
+        System.out.println("\nStrats: " + strategy);
+        System.out.println();
     }
-
-    /*public int getPestTolerance(){
-        return pestTolerance;
-    }*/
 
 
 
@@ -72,13 +79,6 @@ public class Farmer {
 
     public void handlePests(Farm farm){
         strategy.stratHandlePests(this, farm);
-
-        /*
-        int amountToRemove = (int)(usedmoney/pestControlPrice);
-        int removed;
-        removed = farm.RemovePests(amountToRemove);
-        money -= removed*pestControlPrice;
-         */
     }
 
 }

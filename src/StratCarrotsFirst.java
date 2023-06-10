@@ -4,6 +4,11 @@ public class StratCarrotsFirst implements Strategy{
 
 
     @Override
+    public int getPestTolerance() {
+        return defaultPestTolerance;
+    }
+
+    @Override
     public void stratBuySeeds(Farmer farmer, double seedPurchasePrice, int farm_size) {
         double moneyToUse = 2*(farmer.getMoney()/3);
         double usedMoney = 0;

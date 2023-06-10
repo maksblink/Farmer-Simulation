@@ -46,7 +46,6 @@ public class Main {
         farmer.buySeeds(market.getSeedPurchasePrice(), farm.getWidth() * farm.getHeight());
 
         farmer.show_off();
-        System.out.println();
 
         //TODO: zmienic gdy bedzie zmieniony sposo przechowywania pol [!!!]
         for (int i = 0; i < farm.getWidth(); i++) {
@@ -64,5 +63,8 @@ public class Main {
 
 
         farmer.handlePests(farm);
+
+        farmer.rethinkStrategy(farm.getPestCount());
+
     }
 }
