@@ -2,8 +2,7 @@ import java.util.*;
 
 public class Farm {
     private final int width, height;
-    public Field[][] fields;
-
+    public ArrayList<ArrayList<Field>> fields = new ArrayList<>();
     private int SunExposure, Humidity;
     private int pestSpawnChance = 10, // chance = 1/pestSpawnChance
     pestCount = 0;
@@ -21,7 +20,7 @@ public class Farm {
     public Farm(int given_width, int given_height) {
         width = given_width;
         height = given_height;
-        fields = new Field[width][height];
+        fields = new ArrayList<>();
 
         SetUpFields(fields);
     }
@@ -29,31 +28,34 @@ public class Farm {
     public Farm(int given_width, int given_height, int given_pestSpawnChance) {
         width = given_width;
         height = given_height;
-        fields = new Field[width][height];
+        fields = new ArrayList<>();
         pestSpawnChance = given_pestSpawnChance;
 
         SetUpFields(fields);
     }
 
-    private void SetUpFields (Field[][] fields){
+    private void SetUpFields (ArrayList<ArrayList<Field>> fields){
         for (int i = 0; i < width; i++) {
+            ArrayList<Field> row = new ArrayList<>();
             for (int j = 0; j < height; j++) {
-                fields[i][j] = new Field(0, 0);
-                fields[i][j].setLevel(0);
+                Field field = new Field(0,0);
+                field.setLevel(0);
+                row.add(field);
             }
+            fields.add(row);
         }
     }
 
-    public int getWidth() {
-        return width;
+    public int getWidth() {//<---------------
+        return width;//<---------------
     }
 
-    public int getHeight() {
-        return height;
+    public int getHeight() {//<---------------
+        return height;//<---------------
     }
 
-    public int getArea(){
-        return width*height;
+    public int getArea(){//<---------------
+        return width*height;//<---------------
     }
 
     int getSunExposure() {
@@ -65,18 +67,18 @@ public class Farm {
     }
 
     void plant_seed(int x, int y) {
-        fields[x][y].setLevel(1);
+        fields.get(x).get(y).setLevel(1);
     }
 
     void harvest_carrot(int x, int y) {
-        fields[x][y].setLevel(0);
+        fields.get(x).get(y).setLevel(0);
     }
 
     public void show_off_debug() {
         StringBuilder farm_fields = new StringBuilder();
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                farm_fields.append(fields[i][j].getLvl()).append("\t");
+                farm_fields.append(fields.get(i).get(j).getLvl()).append("\t");
             }
             farm_fields.append("\n");
         }
@@ -84,7 +86,7 @@ public class Farm {
         System.out.println("Hello I am Farm!");
         System.out.println("SunExposure: " + SunExposure);
         System.out.println("Humidity: " + Humidity);
-        System.out.println(farm_fields);
+        System.out.println(farm_fields);//<---------------
     }
 
     public void show_off() {
@@ -92,7 +94,7 @@ public class Farm {
         String fieldIcon;
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                switch (fields[i][j].getLvl()){
+                switch (fields.get(i).get(j).getLvl()){
                     case -1:
                         fieldIcon = "*";
                         break;
@@ -137,10 +139,10 @@ public class Farm {
             locx = rand.nextInt(width);
             locy = rand.nextInt(height);
 
-            if (fields[locx][locy].getLvl() > 1
-                    && fields[locx][locy].getLvl() != -1
-                    && fields[locx][locy].getLvl() == 5) {
-                fields[locx][locy].setLevel(-1);
+            if (fields.get(locx).get(locy).getLvl() > 1
+                    && fields.get(locx).get(locy).getLvl() != -1
+                    && fields.get(locx).get(locy).getLvl() == 5) {
+                fields.get(locx).get(locy).setLevel(-1);
                 pestCount ++;
 
                 //v---debug---v
@@ -178,14 +180,13 @@ public class Farm {
     }
 
     private Field IterateThroughFieldsLevelsInFarm(int lvl){
-        for (Field[] ff : fields) {
-            for (Field f : ff){
-                if(f.getLvl() == lvl){
-                    return f;
+        for (ArrayList<Field> fieldRow : fields) {
+            for (Field field : fieldRow){
+                if(field.getLvl() == lvl){
+                    return field;
                 }
             }
         }
-
         return null;
     }
 }
