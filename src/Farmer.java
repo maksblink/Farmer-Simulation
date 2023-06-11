@@ -1,7 +1,7 @@
 public class Farmer {
-    static Strategy defaultStrat = new StratPestsFirst();
+    final Strategy defaultStrat = new StratPestsFirst();
     private int seeds, carrots;
-    private double money, pestControlPrice = 10;
+    private double money, defaultPestControlPrice = 10;
     //TODO: pestControlPrice do marketu (?maybe?)
 
     private Strategy strategy = defaultStrat;
@@ -26,7 +26,7 @@ public class Farmer {
     double getMoney() {return money;}
     public int getSeeds() {return seeds;}
     public int getCarrots() {return carrots;}
-    public double getPestControlPrice() {return pestControlPrice;}
+    public double getPestControlPrice() {return defaultPestControlPrice;}
     public Strategy getStrategy() {return strategy;}
 
     public void addMoney(Strategy strats, double income){

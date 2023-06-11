@@ -51,11 +51,11 @@ public class Main {
 
         for (int i = 0; i < farm.getWidth(); i++) {
             for (int j = 0; j < farm.getHeight(); j++) {
-                if (farm.fields.get(i).get(j).getLvl() == 0) {
+                if (farm.fields.get(i).get(j).getLvlAsInt() == 0) {
                     if (farmer.plantSeed()) {
                         farm.plant_seed(i, j);
                     }
-                } else if (farm.fields.get(i).get(j).getLvl() == 5) {
+                } else if (farm.fields.get(i).get(j).getLvlAsInt() == 5) {
                     farm.harvest_carrot(i, j);
                     farmer.harvestCarrot();
                 }
