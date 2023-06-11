@@ -1,15 +1,19 @@
 public class Field {
-    private int lvl;
+    private CarrotGrowthLevel lvl;
     private int points;
-    private final static int max_points = 100, max_lvl = 5;
+    private final static int maxPoints = 100, maxLvl = CarrotGrowthLevel.MATURE.ordinal()-1;
 
-    public Field(int lvl, int points) {
-        this.lvl = lvl;
+
+    public Field(CarrotGrowthLevel givenLvl, int points) {
+        this.lvl = givenLvl;
         this.points = points;
     }
 
-    public int getLvl() {
+    public CarrotGrowthLevel getLvl() {
         return lvl;
+    }
+    public int getLvlAsInt() {
+        return lvl.ordinal()-1;
     }
 
     public int getPoints() {
@@ -17,22 +21,22 @@ public class Field {
     }
 
     public void addPointsOrLvs(int given_points) {
-        if (points >= max_points) {
+        if (points >= maxPoints) {
             levelUp();
-        } else if (lvl > 0) {
+        } else if (lvl.ordinal() > CarrotGrowthLevel.EMPTY.ordinal()) {
             points += given_points;
         }
     }
 
     private void levelUp() {
-        if (lvl < max_lvl) {
-            lvl++;
+        if (this.getLvlAsInt() < maxLvl) {
+            lvl = CarrotGrowthLevel.values()[lvl.ordinal() + 1];
             points = 0;
         }
     }
 
     public void setLevel(int level) {
-        lvl = level;
+        lvl = CarrotGrowthLevel.values()[level+1];
     }
 
     public void show_off() {

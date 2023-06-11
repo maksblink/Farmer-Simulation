@@ -38,7 +38,7 @@ public class Farm {
         for (int i = 0; i < width; i++) {
             ArrayList<Field> row = new ArrayList<>();
             for (int j = 0; j < height; j++) {
-                Field field = new Field(0,0);
+                Field field = new Field(CarrotGrowthLevel.EMPTY,0);
                 field.setLevel(0);
                 row.add(field);
             }
@@ -96,29 +96,29 @@ public class Farm {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 switch (fields.get(i).get(j).getLvl()){
-                    case -1:
+                    case INFECTED:
                         fieldIcon = "*";
                         break;
-                    case 0:
+                    case EMPTY:
                         fieldIcon = "_";
                         break;
-                    case 1:
+                    case SEED:
                         fieldIcon = ".";
                         break;
-                    case 2:
+                    case SAMPLING:
                         fieldIcon = "v";
                         break;
-                    case 3:
+                    case GROWING:
                         fieldIcon = "Y";
                         break;
-                    case 4:
+                    case IMMATURE:
                         fieldIcon = "n";
                         break;
-                    case 5:
+                    case MATURE:
                         fieldIcon = "ń";
                         break;
                     default:
-                        fieldIcon = "\u9072";// [?]
+                        fieldIcon = "\u2370";// znak: '[?]'
                         break;
                 }
                 farm_fields.append(fieldIcon).append(' ');
@@ -141,9 +141,9 @@ public class Farm {
             locy = rand.nextInt(height);
 
 
-            if (fields.get(locx).get(locy).getLvl() > 1
-                    || fields.get(locx).get(locy).getLvl() != -1
-                    || fields.get(locx).get(locy).getLvl() != 5) {
+            if (fields.get(locx).get(locy).getLvlAsInt() > 1
+                    || fields.get(locx).get(locy).getLvlAsInt() != -1
+                    || fields.get(locx).get(locy).getLvlAsInt() != 5) {
                 fields.get(locx).get(locy).setLevel(-1);
                 pestCount ++;
 
@@ -186,7 +186,7 @@ public class Farm {
     private Field IterateThroughFieldsLevelsInFarm(int lvl){
         for (ArrayList<Field> fieldRow : fields) {
             for (Field field : fieldRow){
-                if(field.getLvl() == lvl){
+                if(field.getLvlAsInt() == lvl){
                     return field;
                 }
             }
