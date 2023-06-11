@@ -9,8 +9,11 @@ public class Main {
             System.out.println("\nTHIS IS THE " + days + " DAY\n");
 
             //Market block
-            market.setRandomSeedPurchasePrice(2, 1);
-            market.setRandomCarrotSalePrice(5, 3);
+            market.setSeedPurchasePrice(SetRandomSeedPurchasePrice.setRandomSeedPurchasePrice(2, 1));
+
+            market.setCarrotSalePrice(SetRandomCarrotSalePrice.setRandomCarrotSalePrice(5, 3));
+
+            market.setCarrotSalePrice(SetRandomCarrotSalePrice.setRandomCarrotSalePrice(5, 3));
             market.show_off();
             System.out.println();
 
@@ -34,13 +37,12 @@ public class Main {
             FarmerRoutine(farmer, farm, market);
 
 
-
             //Utility
             days++;
         }
     }
 
-    private static void FarmerRoutine(Farmer farmer, Farm farm, Market market){
+    private static void FarmerRoutine(Farmer farmer, Farm farm, Market market) {
 
         farmer.sellCarrots(market.getCarrotSalePrice());
         farmer.buySeeds(market.getSeedPurchasePrice(), farm.getWidth() * farm.getHeight());
