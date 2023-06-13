@@ -20,11 +20,11 @@ public class Field {
         return points;
     }
 
-    public void addPointsOrLvs(int given_points) {
+    public void addPointsOrLvs(int givenPoints) {
         if (points >= maxPoints) {
             levelUp();
         } else if (lvl.ordinal() > CarrotGrowthLevel.EMPTY.ordinal()) {
-            points += given_points;
+            points += givenPoints;
         }
     }
 

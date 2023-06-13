@@ -4,8 +4,9 @@ public class Farm {
     private final int width, height;
     public ArrayList<ArrayList<Field>> fields = new ArrayList<>();
     private int SunExposure, Humidity;
-    private int pestSpawnChance = 10, // chance = 1/pestSpawnChance
-    pestCount = 0;
+    private final int defaultPestSpawnChance = 10;
+    private int pestSpawnChance = defaultPestSpawnChance; // chance = 1/pestSpawnChance
+    private int pestCount = 0;
 
     public void setRandomSunExposure(int max, int min) {
         Random rand = new Random();
@@ -17,19 +18,19 @@ public class Farm {
         Humidity = rand.nextInt((max - min) + 1) + min;
     }
 
-    public Farm(int given_width, int given_height) {
-        width = given_width;
-        height = given_height;
+    public Farm(int givenWidth, int givenHeight) {
+        width = givenWidth;
+        height = givenHeight;
         fields = new ArrayList<>();
 
         SetUpFields(fields);
     }
 
-    public Farm(int given_width, int given_height, int given_pestSpawnChance) {
-        width = given_width;
-        height = given_height;
+    public Farm(int givenWidth, int givenHeight, int givenPestSpawnChance) {
+        width = givenWidth;
+        height = givenHeight;
         fields = new ArrayList<>();
-        pestSpawnChance = given_pestSpawnChance;
+        pestSpawnChance = givenPestSpawnChance;
 
         SetUpFields(fields);
     }
@@ -67,31 +68,31 @@ public class Farm {
     }
 
 
-    void plant_seed(int x, int y) {
+    void plantSeed(int x, int y) {
         fields.get(x).get(y).setLevel(1);
     }
 
-    void harvest_carrot(int x, int y) {
+    void harvestCarrot(int x, int y) {
         fields.get(x).get(y).setLevel(0);
     }
 
     public void show_off_debug() {
-        StringBuilder farm_fields = new StringBuilder();
+        StringBuilder farmFields = new StringBuilder();
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                farm_fields.append(fields.get(i).get(j).getLvl()).append("\t");
+                farmFields.append(fields.get(i).get(j).getLvl()).append("\t");
             }
-            farm_fields.append("\n");
+            farmFields.append("\n");
         }
 
         System.out.println("Hello I am Farm!");
         System.out.println("SunExposure: " + SunExposure);
         System.out.println("Humidity: " + Humidity);
-        System.out.println(farm_fields);//<---------------
+        System.out.println(farmFields);//<---------------
     }
 
     public void show_off() {
-        StringBuilder farm_fields = new StringBuilder();
+        StringBuilder farmFields = new StringBuilder();
         String fieldIcon;
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
@@ -121,15 +122,15 @@ public class Farm {
                         fieldIcon = "\u2370";// znak: '[?]'
                         break;
                 }
-                farm_fields.append(fieldIcon).append(' ');
+                farmFields.append(fieldIcon).append(' ');
             }
-            farm_fields.append("\n");
+            farmFields.append("\n");
         }
 
         System.out.println("Hello I am Farm!");
         System.out.println("SunExposure: " + SunExposure);
         System.out.println("Humidity: " + Humidity);
-        System.out.println(farm_fields);
+        System.out.println(farmFields);
     }
 
     public void spawnRandomPest(){
