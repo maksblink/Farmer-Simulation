@@ -2,8 +2,8 @@ import java.util.Random;
 
 public class SetRandomSeedPurchasePrice {
     public static double setRandomSeedPurchasePrice(double max, double min) {
-        double mean = (double) (max + min) / 2; //srednia
-        double stdDev = (double) (max - min) / 4; //odchylenie standardowe / 2
+        double mean = (max + min) / 2; //srednia
+        double stdDev = (max - min) / 4; //odchylenie standardowe / 2
         if (stdDev < 0) stdDev *= (-1);
 
         double rand = new Random().nextGaussian(mean, stdDev);

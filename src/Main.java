@@ -30,10 +30,10 @@ public class Main {
             for (int j = 0; j < farm.getHeight(); j++) {
                 if (farm.fields.get(i).get(j).getLvlAsInt() == 0) {
                     if (farmer.plantSeed()) {
-                        farm.plant_seed(i, j);
+                        farm.plantSeed(i, j);
                     }
                 } else if (farm.fields.get(i).get(j).getLvlAsInt() == 5) {
-                    farm.harvest_carrot(i, j);
+                    farm.harvestCarrot(i, j);
                     farmer.harvestCarrot();
                 }
             }
