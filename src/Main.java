@@ -9,17 +9,17 @@ public class Main {
             System.out.println("\nTHIS IS THE " + days + " DAY\n");
 
 
-            MarketRoutine(market);
+            marketRoutine(market);
 
-            FarmRoutine(farm);
+            farmRoutine(farm);
 
-            FarmerRoutine(farmer, farm, market);
+            farmerRoutine(farmer, farm, market);
 
             days++;
         }
     }
 
-    private static void FarmerRoutine(Farmer farmer, Farm farm, Market market) {
+    private static void farmerRoutine(Farmer farmer, Farm farm, Market market) {
 
         farmer.sellCarrots(market.getCarrotSalePrice());
         farmer.buySeeds(market.getSeedPurchasePrice(), farm.getWidth() * farm.getHeight());
@@ -46,7 +46,7 @@ public class Main {
 
     }
 
-    private static void MarketRoutine(Market market){
+    private static void marketRoutine(Market market){
         market.setSeedPurchasePrice(SetRandomSeedPurchasePrice.setRandomSeedPurchasePrice(2, 1));
 
         market.setCarrotSalePrice(SetRandomCarrotSalePrice.setRandomCarrotSalePrice(5, 3));
@@ -56,7 +56,7 @@ public class Main {
         System.out.println();
     }
 
-    private static void FarmRoutine(Farm farm){
+    private static void farmRoutine(Farm farm){
         farm.show_off();
         System.out.println();
 
