@@ -8,36 +8,13 @@ public class Main {
         while (farmer.getMoney() < 1000000 && farm.getPestCount() < farm.getArea()) {
             System.out.println("\nTHIS IS THE " + days + " DAY\n");
 
-            //Market block
-            market.setSeedPurchasePrice(SetRandomSeedPurchasePrice.setRandomSeedPurchasePrice(2, 1));
 
-            market.setCarrotSalePrice(SetRandomCarrotSalePrice.setRandomCarrotSalePrice(5, 3));
+            MarketRoutine(market);
 
-            market.setCarrotSalePrice(SetRandomCarrotSalePrice.setRandomCarrotSalePrice(5, 3));
-            market.show_off();
-            System.out.println();
+            FarmRoutine(farm);
 
-            //Farm block
-            farm.show_off();
-            System.out.println();
-
-            farm.setRandomSunExposure(6, 0);
-            farm.setRandomHumidity(6, 0);
-
-            for (int i = 0; i < farm.getWidth(); i++) {
-                for (int j = 0; j < farm.getHeight(); j++) {
-                    farm.fields.get(i).get(j).addPointsOrLvs(farm.getSunExposure() * farm.getHumidity());
-                }
-            }
-
-            farm.spawnRandomPest();
-
-
-            //Farmer block
             FarmerRoutine(farmer, farm, market);
 
-
-            //Utility
             days++;
         }
     }
@@ -66,6 +43,33 @@ public class Main {
         farmer.handlePests(farm);
 
         farmer.rethinkStrategy(farm.getPestCount());
+
+    }
+
+    private static void MarketRoutine(Market market){
+        market.setSeedPurchasePrice(SetRandomSeedPurchasePrice.setRandomSeedPurchasePrice(2, 1));
+
+        market.setCarrotSalePrice(SetRandomCarrotSalePrice.setRandomCarrotSalePrice(5, 3));
+
+        market.setCarrotSalePrice(SetRandomCarrotSalePrice.setRandomCarrotSalePrice(5, 3));
+        market.show_off();
+        System.out.println();
+    }
+
+    private static void FarmRoutine(Farm farm){
+        farm.show_off();
+        System.out.println();
+
+        farm.setRandomSunExposure(6, 0);
+        farm.setRandomHumidity(6, 0);
+
+        for (int i = 0; i < farm.getWidth(); i++) {
+            for (int j = 0; j < farm.getHeight(); j++) {
+                farm.fields.get(i).get(j).addPointsOrLvs(farm.getSunExposure() * farm.getHumidity());
+            }
+        }
+
+        farm.spawnRandomPest();
 
     }
 }
